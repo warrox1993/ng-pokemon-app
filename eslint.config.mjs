@@ -36,7 +36,6 @@ export default tseslint.config(
         rules: {
             "unused-imports/no-unused-imports": "warn",
             "no-case-declarations": "off",
-            "no-console": ["error", { allow: ["warn", "error"] }],
             "no-extend-native": "error",
             "@typescript-eslint/no-explicit-any": "off",
             "@typescript-eslint/consistent-type-definitions": "off",
@@ -212,7 +211,8 @@ export default tseslint.config(
                     style: "kebab-case",
                 },
             ],
-            "@angular-eslint/no-input-rename": "off"
+            "@angular-eslint/no-input-rename": "off",
+            "@angular-eslint/no-output-on-prefix": "off"
         },
     },
     {

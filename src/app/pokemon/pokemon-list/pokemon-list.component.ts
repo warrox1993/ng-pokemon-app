@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Output } from '@angular/core';
 
-import { BorderCardDirective } from '../border-card.directive';
-import { POKEMONS } from '../mock-pokemon-list';
-import { Pokemon } from '../pokemon';
-import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
+import { BorderCardDirective } from '../../border-card.directive';
+import { POKEMONS } from '../../mock-pokemon-list';
+import { Pokemon } from '../../pokemon';
+import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
 
 @Component({
     selector: 'pokemon-list',
@@ -21,7 +20,7 @@ export class PokemonListComponent {
     pokemonList: Pokemon[] = POKEMONS;
     filteredList: Pokemon[] = POKEMONS;
 
-    constructor(private router: Router) {}
+    @Output() onPokemonSelected: EventEmitter<number> = new EventEmitter<number>();
 
     onSearch(event: Event): void {
         const input = (event.target as HTMLInputElement).value.trim().toLowerCase();
@@ -32,14 +31,11 @@ export class PokemonListComponent {
         }
 
         this.filteredList = this.pokemonList.filter(p => p.name.toLowerCase().includes(input) ||
-      p.id.toString() === input
+            p.id.toString() === input
         );
     }
 
-    goToDetail(id: number): void {
-        this.router.navigate([
-            '/pokemons',
-            id,
-        ]);
+    selectPokemon(id: number): void {
+        this.onPokemonSelected.emit(id);
     }
 }

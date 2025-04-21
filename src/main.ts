@@ -1,10 +1,11 @@
+import console from 'console';
+
 import { provideZoneChangeDetection } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 
 import { AppComponent } from './app/app.component';
-import { PageNotFoundComponent } from './app/page-not-found/page-not-found.component';
-import { PokemonListComponent } from './app/pokemon-list/pokemon-list.component';
+import { PokemonListComponent } from './app/pokemon/pokemon-list/pokemon-list.component';
 
 bootstrapApplication(AppComponent, {
     providers:
@@ -13,7 +14,7 @@ bootstrapApplication(AppComponent, {
         provideRouter([
             { path: 'pokemons', component: PokemonListComponent },
             { path: '', redirectTo: 'pokemons', pathMatch: 'full' },
-            { path: '**', component: PageNotFoundComponent },
+            { path: '**', redirectTo: 'pokemons', pathMatch: 'full' },
         ]),
     ],
 }).catch(err => console.error(err));

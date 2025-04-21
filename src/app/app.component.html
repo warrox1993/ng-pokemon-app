@@ -1,8 +1,13 @@
-<div class="flex">
-    <div class="w-1/2">
-        <pokemon-list></pokemon-list>
+<div class="flex border-4 border-red-500 p-4">
+    <div class="w-1/2 border-4 border-blue-500 p-4 me-4">
+        <pokemon-list
+            (onPokemonSelected)="onPokemonSelected($event)">
+        </pokemon-list>
     </div>
 
-    <div class="w-1/2">
+    <div class="w-1/2 border-4 border-green-500 p-4">
+        <pokemon-detail
+            [pokemonId]="selectedPokemonId">
+        </pokemon-detail>
     </div>
 </div>

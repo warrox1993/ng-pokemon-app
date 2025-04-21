@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { BorderCardDirective } from '../../border-card.directive';
 import { POKEMONS } from '../../mock-pokemon-list';
 import { Pokemon } from '../../pokemon';
 import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
+import { PokemonService } from '../pokemon.service';
 
 @Component({
     selector: 'pokemon-list',
@@ -17,10 +18,10 @@ import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
     templateUrl: './pokemon-list.html',
 })
 export class PokemonListComponent {
+    private pokemonService = inject(PokemonService);
+
     pokemonList: Pokemon[] = POKEMONS;
     filteredList: Pokemon[] = POKEMONS;
-
-    @Output() onPokemonSelected: EventEmitter<number> = new EventEmitter<number>();
 
     onSearch(event: Event): void {
         const input = (event.target as HTMLInputElement).value.trim().toLowerCase();
@@ -36,6 +37,6 @@ export class PokemonListComponent {
     }
 
     selectPokemon(id: number): void {
-        this.onPokemonSelected.emit(id);
+        this.pokemonService.setPokemonId(id);
     }
 }

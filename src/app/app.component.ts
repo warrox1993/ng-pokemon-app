@@ -15,9 +15,4 @@ import { PokemonListComponent } from './pokemon/pokemon-list/pokemon-list.compon
     templateUrl: './app.component.html',
 })
 export class AppComponent {
-    public selectedPokemonId: number | null = null;
-
-    public onPokemonSelected(id: number): void {
-        this.selectedPokemonId = id;
-    }
 }

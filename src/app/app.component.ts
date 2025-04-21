@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { PokemonDetailComponent } from './pokemon/pokemon-detail/pokemon-detail.component';
-import { PokemonListComponent } from './pokemon/pokemon-list/pokemon-list.component';
+import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
+import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
 @Component({
     selector: 'app-root',
@@ -12,6 +12,7 @@ import { PokemonListComponent } from './pokemon/pokemon-list/pokemon-list.compon
         PokemonDetailComponent,
         CommonModule,
     ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './app.component.html',
 })
 export class AppComponent {

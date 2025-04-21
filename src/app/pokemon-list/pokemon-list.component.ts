@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 
-import { BorderCardDirective } from '../../border-card.directive';
-import { POKEMONS } from '../../mock-pokemon-list';
-import { Pokemon } from '../../pokemon';
-import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
-import { PokemonService } from '../pokemon.service';
+import { BorderCardDirective } from '../border-card.directive';
+import { POKEMONS } from '../mock-pokemon-list';
+import { Pokemon } from '../pokemon';
+import { PokemonService } from '../pokemon/pokemon.service';
+import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
 
 @Component({
     selector: 'pokemon-list',
@@ -15,6 +15,7 @@ import { PokemonService } from '../pokemon.service';
         BorderCardDirective,
         PokemonTypeColorPipe,
     ],
+
     templateUrl: './pokemon-list.html',
 })
 export class PokemonListComponent {
@@ -37,6 +38,6 @@ export class PokemonListComponent {
     }
 
     selectPokemon(id: number): void {
-        this.pokemonService.setPokemonId(id);
+        this.pokemonService.pokemonId.set(id);
     }
 }

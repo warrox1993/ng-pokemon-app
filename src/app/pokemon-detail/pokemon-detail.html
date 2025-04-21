@@ -1,0 +1,56 @@
+@let pokemonValue = pokemon();
+
+<div class="container" *ngIf="pokemon">
+
+    <h2 class="center-align">{{ pokemonValue.name }}</h2>
+
+    <div class="card horizontal hoverable blue-grey darken-1 white-text">
+        <div class="card-image center-align" style="padding: 1rem;">
+            <img [src]="pokemonValue.picture" [alt]="pokemonValue.name" style="max-height: 140px;" />
+        </div>
+
+        <div class="card-stacked">
+            <div class="card-content">
+                <table class="bordered striped highlight">
+                    <tbody>
+                        <tr>
+                            <td><strong>Nom</strong></td>
+                            <td>{{ pokemonValue.name }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Points de vie (HP)</strong></td>
+                            <td>{{ pokemonValue.hp }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dégâts (CP)</strong></td>
+                            <td>{{ pokemonValue.cp }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Types</strong></td>
+                            <td>
+                                <span *ngFor="let type of pokemonValue.types" [ngClass]="type | pokemonTypeColor"
+                                    class="chip">
+                                    {{ type }}
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lieu</strong></td>
+                            <td>{{ pokemonValue.location }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Apparition</strong></td>
+                            <td>{{ pokemonValue.encounterTime }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ajouté le</strong></td>
+                            <td>{{ pokemonValue.createdAt | date: 'short' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 *ngIf="!pokemonValue" class="center red-text">Aucun Pokémon à afficher !</h4>

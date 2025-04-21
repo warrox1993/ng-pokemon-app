@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+.card-image img {
+    width: auto;
+    height: 120px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+.card {
+    transition: border 0.3s ease, transform 0.2s ease;
+    
+  }
+  
+.card:hover {
+    transform: scale(1.03);
+  }
+
+
+  .type-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  @keyframes float3d {
+    0% {
+      transform: rotateX(0deg) rotateY(0deg) translateY(0px) scale(1);
+    }
+    25% {
+      transform: rotateX(1.5deg) rotateY(-1.5deg) translateY(-3px) scale(1.02);
+    }
+    50% {
+      transform: rotateX(0deg) rotateY(0deg) translateY(-6px) scale(1.04);
+    }
+    75% {
+      transform: rotateX(-1.5deg) rotateY(1.5deg) translateY(-3px) scale(1.02);
+    }
+    100% {
+      transform: rotateX(0deg) rotateY(0deg) translateY(0px) scale(1);
+    }
+  }
+  
+  .pokemon-img {
+    max-height: 120px;
+    display: block;
+    margin: 0 auto;
+    transition: filter 0.3s ease;
+    filter: drop-shadow(6px 8px 8px rgba(0, 0, 0, 0.3));
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform;
+    animation: float3d 15s ease-in-out infinite;
+  }
+  

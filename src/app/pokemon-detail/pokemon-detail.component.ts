@@ -14,12 +14,12 @@ import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
 })
 export class PokemonDetailComponent implements OnInit {
   pokemon: Pokemon | undefined;
-  pokemonList : Pokemon[];
+  pokemonList: Pokemon[];
 
   constructor(
     private route: ActivatedRoute,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));

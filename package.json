@@ -5,8 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "serve:ssr:ng-pokemon-app": "node dist/ng-pokemon-app/server/server.mjs"
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
